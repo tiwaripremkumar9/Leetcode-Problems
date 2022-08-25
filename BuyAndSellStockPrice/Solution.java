@@ -19,7 +19,7 @@ public class Solution {
                 currentMaxProfit = prices[i] - currentSmallest; // subtracting the current price with the ssmallest stock price
             }
         }
-        return currentMaxProfit;
+        return currentMaxProfit;    
     }
 
     public static void main(String[] args) {

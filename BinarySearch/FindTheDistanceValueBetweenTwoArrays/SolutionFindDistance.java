@@ -2,7 +2,7 @@ package FindTheDistanceValueBetweenTwoArrays;
 
 import java.util.Arrays;
 
-public class Solution {
+public class SolutionFindDistance {
     public static int findDistanceValue(int [] arr1, int [] arr2, int d){
         Arrays.sort(arr2);
         int ans=0;

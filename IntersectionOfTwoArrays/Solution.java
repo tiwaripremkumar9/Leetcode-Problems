@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 // Java Solution using Hash Sets
 
 class Solution {
@@ -8,7 +11,7 @@ class Solution {
             set.add(i);
         }
         
-        Set<Integer> set2 = new HashSet<>();
+        Set<Integer> set2 = new HashSet();
         for(int j : nums2){
             if(set.contains(j)){
                 set2.add(j);

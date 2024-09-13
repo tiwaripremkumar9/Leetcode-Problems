@@ -7,9 +7,22 @@ class Solution {
      */
 
     public static void main(String[] args) {
-        int [] arr = new int[]{1,2,3,4};
+        int [] arr = new int[]{1,2,3,4,5,6,7,90};
+        int j = 0;
+        int k = arr.length - 1;
 
-        //testing git email change to make commits reflect in contributions
+        while(j < k || j == k){
+            int temp = 1;
+            temp = arr[j];
+            arr[j] = arr[k];
+            arr[k] = temp;
+            j++;
+            k--;
+        }
+        
+        for(int i = 0; i < arr.length; i++){
+            System.out.println(arr[i]);
+        }
 
 
     }

@@ -1,13 +1,11 @@
 package SubarrayWithGivenSum;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+/*
+ * Find a subarray with given target sum.
+ * As solution, need to return a 2-element array consiting of start index and end index of the subarray found.
+ */
 
 public class Solution {
 
@@ -38,46 +36,45 @@ public class Solution {
         return resultArray;
     }
 
-    public static void optimalApproach(int [] arr, int targetSum){
-       // HashMap to store the prefix sums and their indices
-       HashMap<Integer, Integer> prefixSum = new HashMap<>();
-       int currentSum = 0;
+    public static int [] optimalApproach(int [] arr, int targetSum){
+        /*
+         * Best Case Time Complexity - O(n)
+         * Worst Case TC - O(n)
+         */
+        Map<Integer, Integer> map = new HashMap<>();
+        int [] resultArray = {-1,-1};
+        int currentSum = 0;
+        for(int i = 0; i < arr.length; i++){
+            currentSum += arr[i];
+            int startIndex, endIndex = 0;
+            if(currentSum == targetSum){
+                resultArray[0] = 0;
+                resultArray[1] = i;
+            }
+            if(map.containsKey(currentSum - targetSum)){
+                startIndex = map.get(currentSum - targetSum) + 1;
+                endIndex = i;
+                resultArray[0] = startIndex;
+                resultArray[1] = endIndex;
+                break;
+            }
+            map.put(currentSum, i);
+        }
 
-       // Traverse through the array
-       for (int i = 0; i < arr.length; i++) {
-           // Add the current element to the running sum
-           currentSum += arr[i];
-
-           // Check if the current sum is equal to the target sum
-           if (currentSum == targetSum) {
-               System.out.println("Subarray found from index 0 to " + i);
-               return;
-           }
-
-           // Check if (currentSum - targetSum) exists in the map
-           if (prefixSum.containsKey(currentSum - targetSum)) {
-               int start_index = prefixSum.get(currentSum - targetSum) + 1;
-               System.out.println("Subarray found from index " + start_index + " to " + i);
-               return;
-           }
-
-           // Store the current sum with its index in the map
-           prefixSum.put(currentSum, i);
-       }
-
-       // If no subarray is found
-       System.out.println("No subarray with given sum found");
+        return resultArray;
 
     }
 
 
     public static void main(String[] args) {
-        int [] arr = {2,6,1,9,10,3,4};
-        // int [] resultArray = bruteForce(arr, 8);
-        // for (int i : resultArray) {
-        //     System.out.println(i);
-        // }
-        optimalApproach(arr, 22);
+     //int [] arr = {2,6,1,9,10,3,4};
+     int [] arr = {1, 4, 20, 3, 10, 5};
+        //  int [] resultArray = optimalApproach(arr, 22);
+        // int [] resultArray = optimalApproach(arr, 33);
+        int [] resultArray = optimalApproach(arr, 25);
+        for (int i : resultArray) {
+            System.out.println(i);
+        }
     }
     
 }

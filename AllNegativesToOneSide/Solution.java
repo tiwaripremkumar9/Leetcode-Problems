@@ -9,6 +9,9 @@ import java.util.Arrays;
 public class Solution {
 
     public static void sortApproach(int [] arr){
+        /*
+         * The Arrays.sort() method uses a Dual-Pivot Quicksort algorithm, which offers a time complexity of O(nlogn)
+         */
         Arrays.sort(arr);
         for (int i : arr) {
             System.out.println(i);

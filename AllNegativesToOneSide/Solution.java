@@ -18,13 +18,38 @@ public class Solution {
         }
     }
 
-    /*
-     * Test
-     */
+    public static int[] solve(int [] arr){
+        int l = 0;
+        int r = arr.length - 1;
+        while(l < r){
+            if(arr[l] < 0 && arr[r] > 0){
+                l++;
+                r--;
+            }
+            if(arr[l] > 0 && arr[r] < 0){
+                int temp = arr[r];
+                arr[r] = arr[l];
+                arr[l] = temp;
+
+                l++;
+                r--;
+            }
+            if(arr[l] > 0 && arr[r] > 0){
+                r--;
+            }
+            if(arr[l] < 0 && arr[r] < 0){
+                l++;
+            }
+        }
+
+        return arr;
+    }
 
     public static void main(String[] args) {
-        int[] arr = { 5, -2, 23, 7, 87, -42, 509 };
-        sortApproach(arr);
+        int[] arr = { 1,-5,6,4,3,-9,-8,7,-11,4};
+        //sortApproach(arr);
+        int [] resultArray = solve(arr);
+        System.out.println(Arrays.toString(resultArray));
     }
     
 }

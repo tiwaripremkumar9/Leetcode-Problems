@@ -18,7 +18,7 @@ public class Solution {
         }
     }
 
-    public static int[] solve(int [] arr){
+    public static int[] solveNegativeTowardsLeft(int [] arr){
         //take two pointers, one left and one right
         int l = 0;
         int r = arr.length - 1;
@@ -58,10 +58,38 @@ public class Solution {
         return arr;
     }
 
+    public static int []  solveNegativeTowardsRight(int [] arr){
+        int l = 0;
+        int r = arr.length - 1;
+        while(l < r){
+            if(arr[l] > 0 && arr[r] < 0){
+                l++;
+                r--;
+            }
+            if(arr[l] < 0 && arr[r] > 0){
+                int temp = arr[r];
+                arr[r] = arr[l];
+                arr[l] = temp;
+
+                l++;
+                r--;
+            }
+            if(arr[l] > 0 && arr[r] > 0){
+                l++;
+            }
+            if(arr[r] < 0 && arr[l] < 0){
+                r--;
+            }
+        }
+
+        return arr;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 1,-5,6,4,3,-9,-8,7,-11,4};
         //sortApproach(arr);
-        int [] resultArray = solve(arr);
+        //int [] resultArray = solveNegativeTowardsLeft(arr);
+        int [] resultArray = solveNegativeTowardsRight(arr);
         System.out.println(Arrays.toString(resultArray));
     }
     

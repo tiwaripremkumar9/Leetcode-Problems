@@ -19,13 +19,16 @@ public class Solution {
     }
 
     public static int[] solve(int [] arr){
+        //take two pointers, one left and one right
         int l = 0;
         int r = arr.length - 1;
         while(l < r){
+            //if left element is +ve and right is -ve then just increment left and decrememt right.
             if(arr[l] < 0 && arr[r] > 0){
                 l++;
                 r--;
             }
+            //if left is positive and right is negative, swap the element then increment left and decremet positive
             if(arr[l] > 0 && arr[r] < 0){
                 int temp = arr[r];
                 arr[r] = arr[l];
@@ -34,9 +37,19 @@ public class Solution {
                 l++;
                 r--;
             }
+            /*
+             * if both are positive, that means right is at correct position but left is not
+             * hence we should only worry about left element
+             * so, keep left at it's current position but decrement right.
+             */
             if(arr[l] > 0 && arr[r] > 0){
                 r--;
             }
+            /*
+             * if both are negative, that means left is at correct position but right is not
+             * hence we should only worry about right element
+             * so, keep right at it's current position but increment left.
+             */
             if(arr[l] < 0 && arr[r] < 0){
                 l++;
             }

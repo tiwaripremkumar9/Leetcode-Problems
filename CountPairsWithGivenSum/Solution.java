@@ -6,7 +6,7 @@ import java.util.Map;
 public class Solution {
 
     public static void main(String[] args) {
-        int[] arr = {1, 5, 7, -1, 5, -2, 8};
+        int[] arr = {1, 5, 7,4, -1, 5, -2, 8,2};
         int target = 6;
         int count = 0;
 

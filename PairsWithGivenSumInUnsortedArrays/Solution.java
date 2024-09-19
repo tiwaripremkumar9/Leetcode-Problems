@@ -27,8 +27,10 @@ public class Solution {
         int [] arr1 = {-1, -2, 4, -6, 5, 7};
         int [] arr2 = {6, 3, 4, 0};
         int targetSum = 8;
-
-        bruteForce(arr1, arr2, targetSum).forEach(each -> System.out.println(each));
+        List<Integer> resultList = bruteForce(arr1, arr2, targetSum);
+        if(!resultList.isEmpty()){
+            resultList.forEach(each -> System.out.println(each));
+        }
 
     }
     

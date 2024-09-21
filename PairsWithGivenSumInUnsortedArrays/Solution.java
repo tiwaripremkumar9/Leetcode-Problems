@@ -2,7 +2,9 @@ package PairsWithGivenSumInUnsortedArrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /*
  * Given two unsorted arrays of distinct elements, 
@@ -22,6 +24,31 @@ public class Solution {
 
             }
         return list;
+    }
+
+    /*
+     * Time Complexity: 
+     * Putting ELements in map - O(n)
+     * search complments of each element in arr2 in map - O(m)
+     * hence total T.C = O(n+m)
+     */
+
+    public static List optimalApproach2(int [] arr1, int [] arr2, int targetSum){
+        Map<Integer, Integer> map = new HashMap<>();
+        List<Integer> resultList = new ArrayList<>();
+        for(int each : arr2){
+            map.put(each, map.getOrDefault(each, 0) + 1);
+        }
+
+        for(int num : arr1){
+            int complement = targetSum - num;
+            if(map.containsKey(complement)){
+                resultList.add(num);
+                resultList.add(complement);
+            }
+        }
+
+        return resultList;
     }
 
     /*
@@ -76,7 +103,8 @@ For each element in the second array, binary search takes O(log n).
         int [] arr2 = {6, 3, 4, 0};
         int targetSum = 8;
         //List<Integer> resultList = bruteForce(arr1, arr2, targetSum);
-        List<Integer> resultList = optimalApproach1(arr1, arr2, targetSum);
+        // List<Integer> resultList = optimalApproach1(arr1, arr2, targetSum);
+        List<Integer> resultList = optimalApproach2(arr1, arr2, targetSum);
         if(!resultList.isEmpty()){
             resultList.forEach(each -> System.out.println(each));
         }
